@@ -24,7 +24,7 @@ public class MainActivity extends TabActivity {
         TabHost.TabSpec TabMenu3 = TabHostWindow.newTabSpec("Third Tab");
 
         //Setting up tab 1 name.
-        TabMenu1.setIndicator("Tab1");
+        TabMenu1.setIndicator(null, getResources().getDrawable(R.drawable.ic_newspaper));
         //Set tab 1 activity to tab 1 menu.
         TabMenu1.setContent(new Intent(this, TabActivity_1.class));
 
@@ -34,7 +34,7 @@ public class MainActivity extends TabActivity {
         TabMenu2.setContent(new Intent(this, TabActivity_2.class));
 
         //Setting up tab 2 name.
-        TabMenu3.setIndicator("Tab3");
+        TabMenu3.setIndicator(null, getResources().getDrawable(R.drawable.ic_menu));
         //Set tab 3 activity to tab 3 menu.
         TabMenu3.setContent(new Intent(this, TabActivity_3.class));
 
