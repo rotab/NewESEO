@@ -15,9 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TabActivity_1" />
-        <activity android:name=".TabActivity_2" />
-        <activity android:name=".TabActivity_3"></activity>
+        <activity android:name=".TabActivity_News" />
+        <activity android:name=".TabActivity_Deadlines" />
+        <activity android:name=".TabActivity_Information"></activity>
+        <activity android:name=".TabActivity_Schedule"></activity>
     </application>
 
 </manifest>
