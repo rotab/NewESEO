@@ -22,7 +22,6 @@ public class DeadLine {
         this.motif = motif;
         this.limite = limite;
     }
-
     public int getId() {
         return id;
     }

@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.app.TabActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
-import android.widget.Toast;
+/*import android.widget.Toast;
 
 import com.mobile.eseo.neweseoapp.bdd.DeadLineBDD;
-import com.mobile.eseo.neweseoapp.model.DeadLine;
+import com.mobile.eseo.neweseoapp.model.DeadLine;*/
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity {
@@ -95,37 +95,37 @@ public class MainActivity extends TabActivity {
         TabHostWindow = (TabHost) findViewById(android.R.id.tabhost);
 
         //Creating tab menu.
-        TabHost.TabSpec TabMenu1 = TabHostWindow.newTabSpec("First tab");
-        TabHost.TabSpec TabMenu2 = TabHostWindow.newTabSpec("Second Tab");
-        TabHost.TabSpec TabMenu3 = TabHostWindow.newTabSpec("Third Tab");
-        TabHost.TabSpec TabMenu4 = TabHostWindow.newTabSpec("Fourth Tab");
+        TabHost.TabSpec TabNews = TabHostWindow.newTabSpec("News tab");
+        TabHost.TabSpec TabSchedule = TabHostWindow.newTabSpec("Schedule Tab");
+        TabHost.TabSpec TabDeadline = TabHostWindow.newTabSpec("Deadline Tab");
+        TabHost.TabSpec TabInfo = TabHostWindow.newTabSpec("Information Tab");
 
         //Setting up tab 1 name.
-        TabMenu1.setIndicator(null, getResources().getDrawable(R.drawable.ic_newspaper));
+        TabNews.setIndicator(null, getResources().getDrawable(R.drawable.ic_newspaper));
         //Set tab 1 activity to tab 1 menu.
-        TabMenu1.setContent(new Intent(this, TabActivity_News.class));
+        TabNews.setContent(new Intent(this, TabActivity_News.class));
 
         //Setting up tab 2 name.
-        TabMenu2.setIndicator(null, getResources().getDrawable(R.drawable.ic_schedule));
+        TabSchedule.setIndicator(null, getResources().getDrawable(R.drawable.ic_schedule));
         //Set tab 3 activity to tab 1 menu.
-        TabMenu2.setContent(new Intent(this, TabActivity_Schedule.class));
+        TabSchedule.setContent(new Intent(this, TabActivity_Schedule.class));
 
         //Setting up tab 2 name.
-        TabMenu3.setIndicator(null, getResources().getDrawable(R.drawable.ic_deadlines));
+        TabDeadline.setIndicator(null, getResources().getDrawable(R.drawable.ic_deadlines));
         //Set tab 3 activity to tab 3 menu.
-        TabMenu3.setContent(new Intent(this, TabActivity_Deadlines.class));
+        TabDeadline.setContent(new Intent(this, TabActivity_Deadlines.class));
 
         //Setting up tab 2 name.
-        TabMenu4.setIndicator(null, getResources().getDrawable(R.drawable.ic_menu));
+        TabInfo.setIndicator(null, getResources().getDrawable(R.drawable.ic_menu));
         //Set tab 3 activity to tab 3 menu.
-        TabMenu4.setContent(new Intent(this, TabActivity_Information.class));
+        TabInfo.setContent(new Intent(this, TabActivity_Information.class));
 
         //Adding tab1, tab2, tab3 to tabhost view.
 
-        TabHostWindow.addTab(TabMenu1);
-        TabHostWindow.addTab(TabMenu2);
-        TabHostWindow.addTab(TabMenu3);
-        TabHostWindow.addTab(TabMenu4);
+        TabHostWindow.addTab(TabNews);
+        TabHostWindow.addTab(TabSchedule);
+        TabHostWindow.addTab(TabDeadline);
+        TabHostWindow.addTab(TabInfo);
 
     }
 }
