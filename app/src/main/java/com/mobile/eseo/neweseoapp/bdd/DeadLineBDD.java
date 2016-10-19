@@ -11,6 +11,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.mobile.eseo.neweseoapp.model.DeadLine;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import static java.lang.Boolean.FALSE;
+
 public class DeadLineBDD {
 
     private static final int VERSION_BDD = 1;
@@ -71,11 +77,60 @@ public class DeadLineBDD {
         return bdd.delete(TABLE_DEADLINE, COL_ID + " = " +id, null);
     }
 
-   /* public DeadLine getDeadLineWithId(int id){
-        //RÃ©cupÃ¨re dans un Cursor les valeurs correspondant Ã  un livre contenu dans la BDD (ici on sÃ©lectionne la deadline grÃ¢ce Ã  son id)
-        Cursor c = bdd.query(TABLE_DEADLINE, new String[] {COL_ID, COL_MOTIF, COL_LIMITE}, COL_ID + " = " + id, null, null, null, null);
-        return cursorToDeadLine(c);
-    }*/
+
+    //Renvoie les deadline pas dépassées
+    public ArrayList<DeadLine> getDeadLineWithDate () throws ParseException {
+        ArrayList<DeadLine> listeDeadLines = new ArrayList<>();
+            int i;
+
+            Cursor c = bdd.query(TABLE_DEADLINE, new String[] {COL_ID, COL_MOTIF, COL_LIMITE}, null, null, null, null, null);
+
+            c.moveToFirst();
+            DeadLine deadline = new DeadLine();
+            deadline.setId(c.getInt(NUM_COL_ID));
+            deadline.setMotif(c.getString(NUM_COL_MOTIF));
+            deadline.setLimite(c.getString(NUM_COL_LIMITE));
+
+            listeDeadLines.add(deadline);
+
+            for (i=1;i<=c.getColumnCount();i++) {
+
+                listeDeadLines.add(cursorToDeadLineTest(c));
+            }
+
+
+        return listeDeadLines;
+    }
+
+
+    private DeadLine cursorToDeadLineTest(Cursor c) {
+
+        java.util.Date dateJour = new java.util.Date();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yy hh:mm:ss");
+
+        c.moveToNext();
+        DeadLine deadline2 = new DeadLine();
+        deadline2.setId(c.getInt(NUM_COL_ID));
+        deadline2.setMotif(c.getString(NUM_COL_MOTIF));
+        deadline2.setLimite(c.getString(NUM_COL_LIMITE));
+
+
+        Date date = null;
+        try {
+            date = sdf.parse(deadline2.getLimite());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (dateJour.before(date)) {
+            return deadline2;
+        } else {
+            return null;
+
+        }
+
+    }
+
 
 
     public DeadLine getDeadLineWithLimite(String l){
@@ -101,9 +156,11 @@ public class DeadLineBDD {
         deadline.setMotif(c.getString(NUM_COL_MOTIF));
         deadline.setLimite(c.getString(NUM_COL_LIMITE));
         //On ferme le cursor
-        c.close();
+         //c.close();
 
         //On retourne le livre
         return deadline;
     }
+
+
 }
