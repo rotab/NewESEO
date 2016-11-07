@@ -4,10 +4,9 @@ import android.content.Intent;
 import android.app.TabActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
-/*import android.widget.Toast;
 
 import com.mobile.eseo.neweseoapp.bdd.DeadLineBDD;
-import com.mobile.eseo.neweseoapp.model.DeadLine;*/
+import com.mobile.eseo.neweseoapp.model.DeadLine;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity {
@@ -91,6 +90,8 @@ public class MainActivity extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initializeBDD();
+
         //Assign id to Tabhost.
         TabHostWindow = (TabHost) findViewById(android.R.id.tabhost);
 
@@ -127,5 +128,32 @@ public class MainActivity extends TabActivity {
         TabHostWindow.addTab(TabDeadline);
         TabHostWindow.addTab(TabInfo);
 
+    }
+
+    private void initializeBDD() {
+
+        DeadLine deadline1 = new DeadLine(0, "Projet COOL_TL_QL à rendre", "20/01/2017 12:00:00");
+        DeadLine deadline2 = new DeadLine(1, "Projet application mobile à rendre", "15/11/2016 00:00:00");
+        DeadLine deadline3 = new DeadLine(2, "Forum AnjouP: déposer CV", "10/10/2016 18:00:00");
+        DeadLine deadline4 = new DeadLine(3, "CV & LM à rendre", "20/09/2016 16:00:00");
+        DeadLine deadline5 = new DeadLine(4, "TP Base de données avancée", "11/12/2017 00:00:00");
+        DeadLine deadline6 = new DeadLine(5, "PFE", "03/02/2017 23:00:00");
+        DeadLine deadline7 = new DeadLine(6, "100 jours I3", "26/10/2016 18:00:00");
+
+        DeadLineBDD deadlinebdd = new DeadLineBDD(this);
+
+        deadlinebdd.open();
+
+        deadlinebdd.deleteAll();
+
+        deadlinebdd.insertDeadLine(deadline1);
+        deadlinebdd.insertDeadLine(deadline2);
+        deadlinebdd.insertDeadLine(deadline3);
+        deadlinebdd.insertDeadLine(deadline4);
+        deadlinebdd.insertDeadLine(deadline5);
+        deadlinebdd.insertDeadLine(deadline6);
+        deadlinebdd.insertDeadLine(deadline7);
+
+        deadlinebdd.close();
     }
 }

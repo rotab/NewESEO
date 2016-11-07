@@ -77,6 +77,11 @@ public class DeadLineBDD {
         return bdd.delete(TABLE_DEADLINE, COL_ID + " = " +id, null);
     }
 
+    public void deleteAll()
+    {
+        bdd.delete(TABLE_DEADLINE, null, null);
+    }
+
 
     //Renvoie les deadline pas dépassées
     public ArrayList<DeadLine> getDeadLineWithDate () throws ParseException {
