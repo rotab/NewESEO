@@ -20,7 +20,7 @@ import static java.lang.Boolean.FALSE;
 public class DeadLineBDD {
 
     private static final int VERSION_BDD = 1;
-    private static final String NOM_BDD = "eleves.db";
+    private static final String NOM_BDD = "deadline.db";
 
     private static final String TABLE_DEADLINE = "table_DeadLine";
     private static final String COL_ID = "ID";
@@ -82,6 +82,8 @@ public class DeadLineBDD {
     public ArrayList<DeadLine> getDeadLineWithDate () throws ParseException {
         ArrayList<DeadLine> listeDeadLines = new ArrayList<>();
             int i;
+            java.util.Date dateJour = new java.util.Date();
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yy hh:mm:ss");
 
             Cursor c = bdd.query(TABLE_DEADLINE, new String[] {COL_ID, COL_MOTIF, COL_LIMITE}, null, null, null, null, null);
 
@@ -91,10 +93,18 @@ public class DeadLineBDD {
             deadline.setMotif(c.getString(NUM_COL_MOTIF));
             deadline.setLimite(c.getString(NUM_COL_LIMITE));
 
-            listeDeadLines.add(deadline);
+            Date date = null;
+            try {
+                date = sdf.parse(deadline.getLimite());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
-            for (i=1;i<=c.getColumnCount();i++) {
+            if (dateJour.before(date)) {
+                listeDeadLines.add(deadline);
+            }
 
+            for (i=1;i<=c.getCount();i++) {
                 listeDeadLines.add(cursorToDeadLineTest(c));
             }
 
