@@ -17,8 +17,10 @@
         </activity>
         <activity android:name=".TabActivity_News" />
         <activity android:name=".TabActivity_Deadlines" />
-        <activity android:name=".TabActivity_Information"></activity>
-        <activity android:name=".TabActivity_Schedule"></activity>
+        <activity android:name=".TabActivity_Information" />
+        <activity android:name=".TabActivity_Schedule" />
+
+        <!--<service android:name=".DeadlineService" />-->
     </application>
 
 </manifest>

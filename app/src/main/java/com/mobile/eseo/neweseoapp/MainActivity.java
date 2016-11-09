@@ -144,7 +144,6 @@ public class MainActivity extends TabActivity {
 
         deadlinebdd.open();
 
-        deadlinebdd.deleteAll();
 
         deadlinebdd.insertDeadLine(deadline1);
         deadlinebdd.insertDeadLine(deadline2);

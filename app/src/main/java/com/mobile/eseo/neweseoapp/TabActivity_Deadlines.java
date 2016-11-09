@@ -26,7 +26,7 @@ public class TabActivity_Deadlines extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_deadlines);
 
-        /*deadlines.add(new DeadLine(0, "Projet COOL_TL_QL à rendre", "20 janvier 2017 12:00"));
+        /*deadlines.add(new DeadLine(0, "Projet COOL_TL_QL", "20 janvier 2017 12:00"));
         deadlines.add(new DeadLine(1, "Projet application mobile à rendre", "15 novembre 2016 00:00"));
         deadlines.add(new DeadLine(2, "Forum AnjouP: déposer CV", "10 octobre 2016 18:00"));
         deadlines.add(new DeadLine(3, "CV & LM à rendre", "20 septembrer 2016 16:00"));
