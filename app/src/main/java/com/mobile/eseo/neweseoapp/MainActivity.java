@@ -139,11 +139,13 @@ public class MainActivity extends TabActivity {
         DeadLine deadline5 = new DeadLine(4, "TP Base de données avancée", "11/12/2017 00:00:00");
         DeadLine deadline6 = new DeadLine(5, "PFE", "03/02/2017 23:00:00");
         DeadLine deadline7 = new DeadLine(6, "100 jours I3", "26/10/2016 18:00:00");
+        DeadLine deadline8 = new DeadLine(7, "Test", "12/11/2016 17:00:00");
 
         DeadLineBDD deadlinebdd = new DeadLineBDD(this);
 
         deadlinebdd.open();
 
+        deadlinebdd.deleteAll(); //TODO : remove for the final application
 
         deadlinebdd.insertDeadLine(deadline1);
         deadlinebdd.insertDeadLine(deadline2);
@@ -152,6 +154,7 @@ public class MainActivity extends TabActivity {
         deadlinebdd.insertDeadLine(deadline5);
         deadlinebdd.insertDeadLine(deadline6);
         deadlinebdd.insertDeadLine(deadline7);
+        deadlinebdd.insertDeadLine(deadline8);
 
         deadlinebdd.close();
     }
