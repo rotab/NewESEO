@@ -9,8 +9,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.mobile.eseo.neweseoapp.adaptater.DeadlineArrayAdaptater;
+import com.mobile.eseo.neweseoapp.bdd.DeadLineBDD;
 import com.mobile.eseo.neweseoapp.model.DeadLine;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class TabActivity_Deadlines extends AppCompatActivity {
@@ -24,13 +26,19 @@ public class TabActivity_Deadlines extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_deadlines);
 
-        deadlines.add(new DeadLine(0, "Projet COOL_TL_QL à rendre", "20 janvier 2017 12:00"));
-        deadlines.add(new DeadLine(1, "Projet application mobile à rendre", "15 novembre 2016 00:00"));
-        deadlines.add(new DeadLine(2, "Forum AnjouP: déposer CV", "10 octobre 2016 18:00"));
-        deadlines.add(new DeadLine(3, "CV & LM à rendre", "20 septembrer 2016 16:00"));
-        deadlines.add(new DeadLine(4, "TP Base de données avancée", "11 décembre 2017 00:00"));
-        deadlines.add(new DeadLine(5, "PFE", "03 février 2017 23:00"));
-        deadlines.add(new DeadLine(6, "100 jours I3", "26 octobre 2016 18:00"));
+
+        DeadLineBDD deadlinebdd = new DeadLineBDD(this);
+
+        deadlinebdd.open();
+
+
+        try {
+            deadlines = deadlinebdd.getDeadLineWithDate();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        deadlinebdd.close();
 
         listView = (ListView) findViewById(R.id.listDeadline);
         ArrayAdapter<DeadLine> adapter = new DeadlineArrayAdaptater(this, 0, deadlines);

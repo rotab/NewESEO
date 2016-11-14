@@ -14,6 +14,14 @@ public class Enseignant {
 
     public Enseignant(){}
 
+    public Enseignant(String nom, String prenom, String fonction, String email, long numero) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.fonction = fonction;
+        this.email = email;
+        this.numero = numero;
+    }
+
     public int getId() {
         return id;
     }

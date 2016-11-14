@@ -5,20 +5,19 @@ package com.mobile.eseo.neweseoapp.model;
  */
 
 public class PFE {
-    private int ID;
+    private int Id;
     private String titre;
-    private Enseignant enseignant;
-    private String encadrant;
+    private int idEncadrant;
     private String problematique;
 
     public PFE() {}
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return Id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getTitre() {
@@ -29,20 +28,21 @@ public class PFE {
         this.titre = titre;
     }
 
-    public Enseignant getEnseignant() {
-        return enseignant;
+
+
+    public PFE(String titre, int idEncadrant, String problematique) {
+        this.titre = titre;
+        this.idEncadrant = idEncadrant;
+        this.problematique = problematique;
     }
 
-    public void setEnseignant(Enseignant enseignant) {
-        this.enseignant = enseignant;
+
+    public int getEncadrant() {
+        return idEncadrant;
     }
 
-    public String getEncadrant() {
-        return encadrant;
-    }
-
-    public void setEncadrant(String encadrant) {
-        this.encadrant = encadrant;
+    public void setEncadrant(int idEncadrant) {
+        this.idEncadrant = idEncadrant;
     }
 
     public String getProblematique() {
