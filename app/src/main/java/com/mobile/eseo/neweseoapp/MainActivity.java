@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.widget.TabHost;
 
 import com.mobile.eseo.neweseoapp.bdd.DeadLineBDD;
+import com.mobile.eseo.neweseoapp.bdd.EnseignantBDD;
 import com.mobile.eseo.neweseoapp.bdd.PFEBDD;
 import com.mobile.eseo.neweseoapp.model.DeadLine;
+import com.mobile.eseo.neweseoapp.model.Enseignant;
 import com.mobile.eseo.neweseoapp.model.PFE;
 
 @SuppressWarnings("deprecation")
@@ -134,9 +136,39 @@ public class MainActivity extends TabActivity {
 
     private void initializeBDD() {
 
+        //public Enseignant(String nom, String prenom, String fonction, String email, long numero) {
+        Enseignant enseignant1 = new Enseignant("Clavreuil","Mickael","Responsable qqchose","Mickael.clavreuil@eseo.fr", 665212365);
+        Enseignant enseignant2 = new Enseignant("Woodward","Richard","Module applications mobiles","Richard.Woodward@eseo.fr", 616504174);
+        Enseignant enseignant3 = new Enseignant("Rousseau","Sophie","Responsable LD","Sophie.Rousseau@eseo.fr", 655051420);
+        Enseignant enseignant4 = new Enseignant("Brun","Matthias","Responsable qqchose","Matthias.Brun@eseo.fr", 654051420);
+        Enseignant enseignant5 = new Enseignant("Jose","Henry","Responsable sieste","Henry.Jose@eseo.fr", 650452440);
+
+        EnseignantBDD enseignantBDD = new EnseignantBDD(this);
+
+        enseignantBDD.open();
+        enseignantBDD.deleteAll();
+        enseignantBDD.insertEnseignant(enseignant1);
+        enseignantBDD.insertEnseignant(enseignant2);
+        enseignantBDD.insertEnseignant(enseignant3);
+        enseignantBDD.insertEnseignant(enseignant4);
+        enseignantBDD.insertEnseignant(enseignant5);
+
+
         PFE pfe1 = new PFE(" Industrialisation logicielle", 1, "Le projet doit répondre à un besoin d'automatisation des processus permettant de produire, tester, qualifier et livrer un produit de type logiciel. Le projet part d'une base existante connue, les PIC, pour y ajouter une automatisation plus poussée et aboutir à une PLIC. ");
         PFE pfe2 = new PFE("Panneau Solaire Orientable", 1, " Le thème des énergies renouvelables a été retenu en I1 (S6) pour dispenser sous forme de projets, les enseignements du génie électrique et de l'automatique . La partie \"automatique\" est illustrée par un dispositif à base de panneau solaire contrôlable en azimut voire en élévation pour un \"suivi du soleil\". L'équipe d'enseignants souhaite disposer d'un démonstrateur.");
         PFE pfe3 = new PFE("Plateforme de fiction interactive", 1, "Etude et développement d’une plateforme au sein de l’environnement Android permettant aux utilisateurs de développer et de participer à une fiction interactive. La plateforme devra être fonctionnelle tout en laissant un maximum de liberté scénaristique aux utilisateurs.");
+        PFE pfe4 = new PFE("Urban Board", 1, "Ce projet se déroulera en partenariat avec la société Véolia et concerne une application dans le champs de la ville intelligente. L'idée du projet est de proposer un affichage en temps réels des informations clés qui caractérisent le fonctionnement des infrastructures urbaines. Ce projet a été déposé par le partenaire industriel dans le cadre de PAVIC la plateforme angevine pour la ville intelligente. ");
+        PFE pfe5 = new PFE("Plug-in(s) pédagogique pour Eclipse", 1, "Depuis 8 ans, l'ESEO a utilisé l'Assignment Centre pour aider les élèves en I1 et les enseignants pendant les projets de programmation orientée objet. LAssignment Centre est constitué de trois modules:\n" +
+                "\n" +
+                "    pour les enseignants: la création et l'exportation des fichiers necessaire pour l'Assignment Centre Student Module (acsm) (avec les tests unitaires et les tests de qualités)\n" +
+                "    pour les élèves(acsm): l'aide interactive au cours du projet (la conformité, la progression et la qualité)\n" +
+                "    pour les enseignants:l'analyse des codes (la conformité, la progression, la qualité et le plagiat) \n" +
+                "\n" +
+                "De ces trois modules, seul le module élève est entièrement fonctionnel, les deux autres modules nécessitent un certain nombre d'étapes manuelles. En plus, depuis l'année dernière, les modailités du cours Java à l'ESEO a changé, parmi ces modification, les élèves ont le droit d'utiliser Eclipse au cours du second semestre. ");
+        PFE pfe6 = new PFE("L'arroseur connecté.", 1, "équiper un arroseur automatique d'une connexion permettant le contrôle à distance et la surveillance d'anomalies afin de permettre au maraîcher de dormir la nuit.");
+        PFE pfe7 = new PFE("La sécurité par la pratique", 1, "Le numérique est au coeur de notre vie, nous la facilitant de plus en plus. Par contre, elle n'a jamais été aussi exposée qu'en ce moment. Toute cette technologie est potentiellement victime d'attaques virtuelles. Elles sont diverses et variées, menaçant aussi bien le matériel que le logiciel. De plus, un grand nombre de personnes négligent ces dangers par manque d'informations.");
+        PFE pfe8 = new PFE(" \tConception d’un intranet sur AWS", 1, "Quelles solutions techniques choisir pour la conception d’un intranet élastique, scalable et viable économiquement pour une jeune entreprise / start-up?");
+
         PFEBDD pfeBDD = new PFEBDD(this);
 
         pfeBDD.open();
@@ -145,6 +177,11 @@ public class MainActivity extends TabActivity {
         pfeBDD.insertPFE(pfe1);
         pfeBDD.insertPFE(pfe2);
         pfeBDD.insertPFE(pfe3);
+        pfeBDD.insertPFE(pfe4);
+        pfeBDD.insertPFE(pfe5);
+        pfeBDD.insertPFE(pfe6);
+        pfeBDD.insertPFE(pfe7);
+        pfeBDD.insertPFE(pfe8);
 
         pfeBDD.close();
 

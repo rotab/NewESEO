@@ -59,7 +59,6 @@ public class DeadLineBDD {
         //on lui ajoute une valeur associÃ©e Ã  une clÃ© (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(COL_MOTIF, deadline.getMotif());
         values.put(COL_LIMITE, deadline.getLimite());
-        //on insÃ¨re l'objet dans la BDD via le ContentValues
         return bdd.insert(TABLE_DEADLINE, null, values);
     }
 
@@ -87,6 +86,8 @@ public class DeadLineBDD {
     public ArrayList<DeadLine> getDeadLineWithDate () throws ParseException {
         ArrayList<DeadLine> listeDeadLines = new ArrayList<>();
             int i;
+            java.util.Date dateJour = new java.util.Date();
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yy hh:mm:ss");
 
             Cursor c = bdd.query(TABLE_DEADLINE, new String[] {COL_ID, COL_MOTIF, COL_LIMITE}, null, null, null, null, null);
 
@@ -96,9 +97,16 @@ public class DeadLineBDD {
             deadline.setMotif(c.getString(NUM_COL_MOTIF));
             deadline.setLimite(c.getString(NUM_COL_LIMITE));
 
+            Date date = null;
+            try {
+                date = sdf.parse(deadline.getLimite());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
-            listeDeadLines.add(deadline);
-        //aa
+            if (dateJour.before(date)) {
+                listeDeadLines.add(deadline);
+            }
 
             for (i=1;i<c.getCount();i++) {
                 DeadLine deadlineTest=cursorToDeadLineTest(c);
@@ -107,7 +115,8 @@ public class DeadLineBDD {
                 }
             }
 
-
+        //On ferme le cursor
+        c.close();
         return listeDeadLines;
     }
 
@@ -135,7 +144,6 @@ public class DeadLineBDD {
             return deadline2;
         } else {
             return null;
-
         }
 
     }
@@ -164,8 +172,7 @@ public class DeadLineBDD {
         deadline.setId(c.getInt(NUM_COL_ID));
         deadline.setMotif(c.getString(NUM_COL_MOTIF));
         deadline.setLimite(c.getString(NUM_COL_LIMITE));
-        //On ferme le cursor
-         //c.close();
+
 
         //On retourne le livre
         return deadline;
