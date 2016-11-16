@@ -120,6 +120,44 @@ public class DeadLineBDD {
         return listeDeadLines;
     }
 
+    //Renvoie les deadline des prochaines 24h
+    public ArrayList<DeadLine> getDeadLineOfDay () throws ParseException {
+        ArrayList<DeadLine> listeDeadLines = new ArrayList<>();
+        int i;
+        java.util.Date dateJour = new java.util.Date();
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yy hh:mm:ss");
+
+        Cursor c = bdd.query(TABLE_DEADLINE, new String[] {COL_ID, COL_MOTIF, COL_LIMITE}, null, null, null, null, null);
+
+        c.moveToFirst();
+        DeadLine deadline = new DeadLine();
+        deadline.setId(c.getInt(NUM_COL_ID));
+        deadline.setMotif(c.getString(NUM_COL_MOTIF));
+        deadline.setLimite(c.getString(NUM_COL_LIMITE));
+
+        Date date = null;
+        try {
+            date = sdf.parse(deadline.getLimite());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (dateJour.before(date)) {
+            listeDeadLines.add(deadline);
+        }
+
+        for (i=1;i<c.getCount();i++) {
+            DeadLine deadlineTest=cursorToDeadLineOfDayTest(c);
+            if (deadlineTest!=null) {
+                listeDeadLines.add(deadlineTest);
+            }
+        }
+
+        //On ferme le cursor
+        c.close();
+        return listeDeadLines;
+    }
+
 
     private DeadLine cursorToDeadLineTest(Cursor c) {
 
@@ -148,6 +186,35 @@ public class DeadLineBDD {
 
     }
 
+    private DeadLine cursorToDeadLineOfDayTest(Cursor c) {
+
+        java.util.Date dateJour = new java.util.Date();
+        java.util.Date dateLendemain = new java.util.Date();
+        dateLendemain.setTime(dateJour.getTime()+86400000);
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yy hh:mm:ss");
+
+        c.moveToNext();
+        DeadLine deadline2 = new DeadLine();
+        deadline2.setId(c.getInt(NUM_COL_ID));
+        deadline2.setMotif(c.getString(NUM_COL_MOTIF));
+        deadline2.setLimite(c.getString(NUM_COL_LIMITE));
+
+
+        Date date = null;
+        try {
+            date = sdf.parse(deadline2.getLimite());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (dateJour.before(date) && dateLendemain.after(date)) {
+            return deadline2;
+        } else {
+            return null;
+        }
+
+    }
+
 
 
     public DeadLine getDeadLineWithLimite(String l){
@@ -158,7 +225,7 @@ public class DeadLineBDD {
     }
 
 
-    //Cette mÃ©thode permet de convertir un cursor en un livre
+    //Cette mÃ©thode permet de convertir un cursor en une date limite
     private DeadLine cursorToDeadLine(Cursor c){
         //si aucun Ã©lÃ©ment n'a Ã©tÃ© retournÃ© dans la requÃªte, on renvoie null
         if (c.getCount() == 0)

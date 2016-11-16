@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NewESEOApp</string>
     <string name="deadline_title">Dates Limites</string>
-    <string name="update_deadline">Activer MàJ</string>
+    <string name="notif_deadline">Activer notifications</string>
+    <string name="title_activity_plouf">Plouf</string>
 
 </resources>

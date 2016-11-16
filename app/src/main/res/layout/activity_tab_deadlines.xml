@@ -15,25 +15,23 @@
         android:layout_height="wrap_content"
         android:id="@+id/titleBarDeadline">
 
+        <Switch
+            android:text="@string/notif_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/notifSwitch" />
+
         <TextView
             android:id="@+id/titleDeadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_below="@id/notifSwitch"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:text="@string/deadline_title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
-
-        <Switch
-            android:text="@string/update_deadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/updateSwitch" />
 
 
     </RelativeLayout>
