@@ -12,10 +12,10 @@ import java.util.Calendar;
 
 import static android.content.Context.ALARM_SERVICE;
 
-/**
- * Created by c.boutant on 11/11/2016.
- */
 
+/*
+* This class allows automatically to reprogram alarm for the notifications after a restarting of the device.
+* */
 public class BootReceiver extends BroadcastReceiver {
 
     @Override

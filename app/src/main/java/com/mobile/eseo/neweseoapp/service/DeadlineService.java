@@ -25,9 +25,9 @@ import java.util.ArrayList;
 import static android.app.Notification.FLAG_AUTO_CANCEL;
 
 
+/*This service is called once per day and creates notifications for each deadline corresponding to the 24 hours following.*/
 public class DeadlineService extends Service {
 
-    public static final int ID_NOTIFICATION = 1988;
 
     private ArrayList<DeadLine> deadlines = new ArrayList<>();
     private PowerManager.WakeLock mWakeLock;
@@ -38,19 +38,19 @@ public class DeadlineService extends Service {
     }
 
     private void handleIntent(Intent intent) {
-        // obtain the wake lock
+
         PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "My Tag");
         mWakeLock.acquire();
 
-        // check the global background data setting
+
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         if (!cm.getBackgroundDataSetting()) {
             stopSelf();
             return;
         }
 
-        // do the actual work, in a separate thread
+
         new PollTask().execute();
     }
 

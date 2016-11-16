@@ -22,6 +22,8 @@
         <activity android:name=".TabActivity_Deadlines" />
         <activity android:name=".TabActivity_Information" />
         <activity android:name=".TabActivity_Schedule" />
+        <activity android:name=".TabActivity_PFE" />
+        <activity android:name=".TabActivity_Enseignants" />
 
         <receiver
             android:name=".BootReceiver"

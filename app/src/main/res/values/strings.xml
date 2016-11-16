@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">NewESEOApp</string>
     <string name="deadline_title">Dates Limites</string>
-    <string name="notif_deadline">Activer notifications</string>
+    <string name="notif_deadline">Désactiver notifications(prochainement)</string>
     <string name="title_notification">NewEseoApp deadline</string>
     <string name="ticker_notification">Vous avez une deadline aujourd\'hui</string>
+    <string name="pfe">Liste des PFE</string>
+    <string name="teacher">Liste des enseignants</string>
+    <string name="tab_news_info">Ici vous pourrez voir prochainement les actualités de l'ESEO</string>
+    <string name="tab_schedule_info">Ici vous pourrez voir prochainement votre emploi du temps</string>
 </resources>

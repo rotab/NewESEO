@@ -58,6 +58,9 @@ public class MainActivity extends TabActivity {
 
     }
 
+    /*This method initialize the data base with statics data.
+    * When the application can be connected to the database containing the necessary information, it will take its data in this one.
+    * */
     private void initializeBDD() {
 
         //public Enseignant(String nom, String prenom, String fonction, String email, long numero) {
@@ -109,13 +112,31 @@ public class MainActivity extends TabActivity {
 
         pfeBDD.close();
 
-        DeadLine deadline1 = new DeadLine(0, "Projet COOL_TL_QL à rendre", "20/01/2017 12:00:00");
-        DeadLine deadline2 = new DeadLine(1, "Projet application mobile à rendre", "20/11/2016 00:00:00");
-        DeadLine deadline3 = new DeadLine(2, "Forum AnjouP: déposer CV", "21/11/2016 18:00:00");
-        DeadLine deadline4 = new DeadLine(3, "CV & LM à rendre", "28/11/2016 16:00:00");
-        DeadLine deadline5 = new DeadLine(4, "TP Base de données avancée", "16/11/2016 18:00:00");
-        DeadLine deadline6 = new DeadLine(5, "PFE", "16/11/2017 23:00:00");
-        DeadLine deadline7 = new DeadLine(6, "100 jours I3", "26/12/2016 18:00:00");
+        DeadLine deadline1 = new DeadLine(0, "Projet COOL_TL_QL à rendre", "20/10/2016 12:00:00");
+        DeadLine deadline2 = new DeadLine(1, "Projet application mobile à rendre", "01/11/2016 00:00:00");
+        DeadLine deadline3 = new DeadLine(2, "Forum AnjouP: déposer CV", "16/11/2016 18:00:00");
+        DeadLine deadline4 = new DeadLine(3, "CV & LM à rendre", "16/11/2016 16:00:00");
+        DeadLine deadline5 = new DeadLine(4, "TP Base de données avancée", "17/11/2016 18:00:00");
+        DeadLine deadline6 = new DeadLine(5, "PFE", "17/11/2016 23:00:00");
+        DeadLine deadline7 = new DeadLine(6, "100 jours I3", "18/11/2016 18:00:00");
+
+        DeadLine deadline8 = new DeadLine(7, "Projet Composant Logiciel", "18/11/2016 12:00:00");
+        DeadLine deadline9 = new DeadLine(8, "Inscription Association", "19/11/2016 00:00:00");
+        DeadLine deadline10 = new DeadLine(9, "Forum étudiant", "19/11/2016 18:00:00");
+        DeadLine deadline11 = new DeadLine(10, "Rapport de stage", "20/11/2016 16:00:00");
+        DeadLine deadline12 = new DeadLine(11, "Audit COOL_TL_QL", "20/11/2016 18:00:00");
+        DeadLine deadline13 = new DeadLine(12, "Monographie sectorielle", "21/11/2016 23:00:00");
+        DeadLine deadline14 = new DeadLine(13, "Inscription soirée étudiant", "21/11/2016 18:00:00");
+
+        DeadLine deadline15 = new DeadLine(14, "Etude de cas BI", "22/11/2016 12:00:00");
+        DeadLine deadline16 = new DeadLine(15, "Projet Systeme critique", "23/11/2016 10:00:00");
+        DeadLine deadline17 = new DeadLine(16, "Forum étudiant", "24/11/2016 18:00:00");
+        DeadLine deadline18 = new DeadLine(17, "Convention de stage à signer", "25/11/2016 16:00:00");
+        DeadLine deadline19 = new DeadLine(18, "Réunion PFE", "26/11/2016 18:00:00");
+        DeadLine deadline20 = new DeadLine(19, "Colloque des objets connectés", "27/11/2016 23:00:00");
+        DeadLine deadline21 = new DeadLine(20, "Audit Test", "28/11/2016 18:00:00");
+        DeadLine deadline22 = new DeadLine(21, "Début stage I3", "27/02/2017 07:00:00");
+        DeadLine deadline23 = new DeadLine(22, "Remise diplome", "10/09/2017 18:00:00");
 
         DeadLineBDD deadlinebdd = new DeadLineBDD(this);
 
@@ -130,6 +151,24 @@ public class MainActivity extends TabActivity {
         deadlinebdd.insertDeadLine(deadline5);
         deadlinebdd.insertDeadLine(deadline6);
         deadlinebdd.insertDeadLine(deadline7);
+
+        deadlinebdd.insertDeadLine(deadline8);
+        deadlinebdd.insertDeadLine(deadline9);
+        deadlinebdd.insertDeadLine(deadline10);
+        deadlinebdd.insertDeadLine(deadline11);
+        deadlinebdd.insertDeadLine(deadline12);
+        deadlinebdd.insertDeadLine(deadline13);
+        deadlinebdd.insertDeadLine(deadline14);
+
+        deadlinebdd.insertDeadLine(deadline15);
+        deadlinebdd.insertDeadLine(deadline16);
+        deadlinebdd.insertDeadLine(deadline17);
+        deadlinebdd.insertDeadLine(deadline18);
+        deadlinebdd.insertDeadLine(deadline19);
+        deadlinebdd.insertDeadLine(deadline20);
+        deadlinebdd.insertDeadLine(deadline21);
+        deadlinebdd.insertDeadLine(deadline22);
+        deadlinebdd.insertDeadLine(deadline23);
 
         deadlinebdd.close();
     }

@@ -16,7 +16,8 @@ tools:context="com.mobile.eseo.neweseoapp.TabActivity_Schedule">
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    android:text="THIS IS TAB Schedule SCREEN"
+    android:text="@string/tab_schedule_info"
+    android:textColor="@color/colorDisable"
     android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
