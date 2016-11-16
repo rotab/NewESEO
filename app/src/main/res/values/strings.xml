@@ -2,6 +2,6 @@
     <string name="app_name">NewESEOApp</string>
     <string name="deadline_title">Dates Limites</string>
     <string name="notif_deadline">Activer notifications</string>
-    <string name="title_activity_plouf">Plouf</string>
-
+    <string name="title_notification">NewEseoApp deadline</string>
+    <string name="ticker_notification">Vous avez une deadline aujourd\'hui</string>
 </resources>

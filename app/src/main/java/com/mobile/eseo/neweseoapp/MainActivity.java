@@ -114,7 +114,7 @@ public class MainActivity extends TabActivity {
         DeadLine deadline3 = new DeadLine(2, "Forum AnjouP: déposer CV", "21/11/2016 18:00:00");
         DeadLine deadline4 = new DeadLine(3, "CV & LM à rendre", "28/11/2016 16:00:00");
         DeadLine deadline5 = new DeadLine(4, "TP Base de données avancée", "16/11/2016 18:00:00");
-        DeadLine deadline6 = new DeadLine(5, "PFE", "03/02/2017 23:00:00");
+        DeadLine deadline6 = new DeadLine(5, "PFE", "16/11/2017 23:00:00");
         DeadLine deadline7 = new DeadLine(6, "100 jours I3", "26/12/2016 18:00:00");
 
         DeadLineBDD deadlinebdd = new DeadLineBDD(this);

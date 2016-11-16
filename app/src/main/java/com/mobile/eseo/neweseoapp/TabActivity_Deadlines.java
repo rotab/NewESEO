@@ -48,7 +48,7 @@ public class TabActivity_Deadlines extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                //déclenchement d'alarme
+                //changement dans les préférences
 
             }
         });
